@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find ublox_gps)/launch/ublox_device.launch" />
+    <include file="$(find phidgets_spatial)/launch/spatial.launch" />
+    <node name="imus_node" pkg="robot_localization" type="YPR.cpp" />
+</launch>

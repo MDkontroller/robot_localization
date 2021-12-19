@@ -114,7 +114,6 @@ catkin_package(
     tf2_ros
   DEPENDS
     ${EIGEN_PACKAGE}
-    GeographicLib
     YAML_CPP
 )
 
@@ -149,7 +148,7 @@ add_executable(ekf_localization_node src/ekf_localization_node.cpp)
 add_executable(ukf_localization_node src/ukf_localization_node.cpp)
 add_executable(navsat_transform_node src/navsat_transform_node.cpp)
 add_executable(robot_localization_listener_node src/robot_localization_listener_node.cpp)
-
+add_executable(imus_node src/YPR.cpp)
 # Dependencies
 add_dependencies(filter_base ${PROJECT_NAME}_gencpp)
 add_dependencies(navsat_transform ${PROJECT_NAME}_gencpp)
@@ -173,6 +172,7 @@ target_link_libraries(ukf_localization_nodelet ros_filter ${catkin_LIBRARIES})
 target_link_libraries(navsat_transform filter_utilities ros_filter_utilities ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES} ${GeographicLib_LIBRARIES})
 target_link_libraries(navsat_transform_node navsat_transform ${catkin_LIBRARIES} ${GeographicLib_LIBRARIES})
 target_link_libraries(navsat_transform_nodelet navsat_transform ${catkin_LIBRARIES} ${GeographicLib_LIBRARIES})
+target_link_libraries(imus_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##
